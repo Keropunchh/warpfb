@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+#content-display {
+    min-height: 200px;
+}
+
+.header {
+    background: white;
+    padding: 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/*  Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    padding: 20px 10px;
+}
+  
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+  
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+  
+.sidebar ul li button {
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+}
+
+.sidebar ul li button:hover {
+    background-color: #555;
+}
+.sidebar h2 {
+    padding-bottom: 20px;
+}
+/* หัวข้อ */ 
+.page-header {
+    display: flex;
+    justify-content: space-between;
+}
+/* สไตล์สำหรับตาราง */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+  
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+  
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+  
+/* สไตล์สำหรับปุ่ม */
+button {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+.add-btn {
+    background-color: #36d1f4;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: #1c9dd4;
+}
+
+/* Filter Style */
+#leagueFilter {
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}

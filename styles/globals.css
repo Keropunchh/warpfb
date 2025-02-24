@@ -14,6 +14,14 @@ body {
   align-items: center;
 }
 
+.form-group {
+  margin-bottom: 30px;
+}
+
+.image-preview {
+  margin: 10px 0px 30px 0px;
+}
+
 /* Sidebar Style */
 .sidebar {
   width: 250px;
@@ -69,6 +77,10 @@ button {
   font-size: 16px;
 }
 
+button:hover {
+  background-color: #45a049;
+}
+
 .add-btn {
   background-color: #36d1f4;
   color: white;
@@ -76,4 +88,43 @@ button {
 
 .add-btn:hover {
   background-color: #1c9dd4;
+}
+
+.edit-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #45a049;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
 }

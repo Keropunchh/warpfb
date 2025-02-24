@@ -1,7 +1,10 @@
+import { useRouter } from "next/router";
+
 export default function Sidebar() {
+  const router = useRouter();
   return (
     <aside className="sidebar">
-      <h2>My Dashboard</h2>
+      <h2>Dashboard</h2>
       <nav>
         <ul>
           <li>
@@ -11,7 +14,7 @@ export default function Sidebar() {
             <button onClick={() => router.push("/")}>ลีค</button>
           </li>
           <li>
-            <button onClick={() => router.push("/")}>ทีม</button>
+            <button onClick={() => router.push("/teams/mainTeam")}>ทีม</button>
           </li>
           <li>
             <button onClick={() => router.push("/")}>ช่องไลฟ์</button>

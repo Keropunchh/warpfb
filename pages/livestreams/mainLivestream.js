@@ -41,8 +41,8 @@ export default function LiveStream() {
         <colgroup>
           <col style={{ width: "30%" }} />
           <col style={{ width: "30%" }} />
-          <col style={{ width: "30%" }} />
-          <col style={{ width: "10%" }} />
+          <col style={{ width: "20%" }} />
+          <col style={{ width: "20%" }} />
         </colgroup>
         <thead>
           <tr>
@@ -55,14 +55,14 @@ export default function LiveStream() {
         <tbody>
           {streams.map((stream, index) => (
             <tr key={index}>
-              <td>{stream.name}</td>
+              <td>{stream.title}</td>
               <td>
                 <a href={stream.link} target="_blank" rel="noopener noreferrer">
                   Link
                 </a>
               </td>
               <td>
-                <img src={stream.logo} alt={stream.name} width="100" />
+                <img src={stream.logo} alt={stream.title} width="100" />
               </td>
               <td>
                 <Link href={`/livestreams/editLivestream?id=${stream.id}`}>

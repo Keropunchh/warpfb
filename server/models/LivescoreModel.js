@@ -3,18 +3,18 @@ const db = require("../config/db");
 class LivescoreModel {
   // ดึงข้อมูลทั้งหมด
   static getAllLivescores(callback) {
-    db.query("SELECT * FROM livescores", callback);
+    db.query("SELECT * FROM livescore", callback);
   }
 
   // ดึงข้อมูลตาม ID
   static getLivescoreById(id, callback) {
-    db.query("SELECT * FROM livescores WHERE id = ?", [id], callback);
+    db.query("SELECT * FROM livescore WHERE id = ?", [id], callback);
   }
 
   // เพิ่มข้อมูลใหม่
   static createLivescore(name, link, callback) {
     db.query(
-      "INSERT INTO livescores (name, link) VALUES (?, ?)",
+      "INSERT INTO livescore (name, link) VALUES (?, ?)",
       [name, link],
       callback
     );
@@ -23,7 +23,7 @@ class LivescoreModel {
   // อัปเดตข้อมูล
   static updateLivescore(id, name, link, callback) {
     db.query(
-      "UPDATE livescores SET name = ?, link = ? WHERE id = ?",
+      "UPDATE livescore SET name = ?, link = ? WHERE id = ?",
       [name, link, id],
       callback
     );
@@ -31,7 +31,7 @@ class LivescoreModel {
 
   // ลบข้อมูล
   static deleteLivescore(id, callback) {
-    db.query("DELETE FROM livescores WHERE id = ?", [id], callback);
+    db.query("DELETE FROM livescore WHERE id = ?", [id], callback);
   }
 }
 

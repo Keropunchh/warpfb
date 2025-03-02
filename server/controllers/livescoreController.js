@@ -1,4 +1,4 @@
-const LivescoreModel = require("../models/LivescoreModel");
+const LivescoreModel = require("../models/livescoreModel");
 
 // ดึงข้อมูลทั้งหมด
 exports.getAllLivescores = (req, res) => {
@@ -32,7 +32,10 @@ exports.createLivescore = (req, res) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
-      res.json({ message: "Livescore added successfully", id: result.insertId });
+      res.json({
+        message: "Livescore added successfully",
+        id: result.insertId,
+      });
     }
   });
 };

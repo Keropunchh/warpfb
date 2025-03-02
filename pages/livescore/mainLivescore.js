@@ -53,7 +53,7 @@ export default function LiveScore() {
         <tbody>
           {scores.map((score, index) => (
             <tr key={index}>
-              <td>{score.name}</td>
+              <td>{score.title}</td>
               <td>
                 <a href={score.link} target="_blank" rel="noopener noreferrer">
                   Link

@@ -14,7 +14,7 @@ class LivescoreModel {
   // เพิ่มข้อมูลใหม่
   static createLivescore(name, link, callback) {
     db.query(
-      "INSERT INTO livescore (name, link) VALUES (?, ?)",
+      "INSERT INTO livescore (title, url) VALUES (?, ?)",
       [name, link],
       callback
     );
@@ -23,7 +23,7 @@ class LivescoreModel {
   // อัปเดตข้อมูล
   static updateLivescore(id, name, link, callback) {
     db.query(
-      "UPDATE livescore SET name = ?, link = ? WHERE id = ?",
+      "UPDATE livescore SET title = ?, url = ? WHERE id = ?",
       [name, link, id],
       callback
     );

@@ -11,7 +11,7 @@ class LiveStreamModel {
 
   static createLiveStream(name, link, logo, callback) {
     db.query(
-      "INSERT INTO live_streams (name, link, logo) VALUES (?, ?, ?)",
+      "INSERT INTO live_streams (title, url, logo) VALUES (?, ?, ?)",
       [name, link, logo],
       callback
     );
@@ -19,7 +19,7 @@ class LiveStreamModel {
 
   static updateLiveStream(id, name, link, logo, callback) {
     db.query(
-      "UPDATE live_streams SET name = ?, link = ?, logo = ? WHERE id = ?",
+      "UPDATE live_streams SET title = ?, url = ?, logo = ? WHERE id = ?",
       [name, link, logo, id],
       callback
     );

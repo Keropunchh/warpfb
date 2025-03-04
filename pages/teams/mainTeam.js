@@ -58,6 +58,7 @@ export default function Team() {
                 <img src={team.logo} alt={team.name} width="150" />
               </td>
               <td>
+              <div className="button-group">
                 <Link href={`/teams/editTeam?id=${team.id}`}>
                   <button className="edit-btn">แก้ไข</button>
                 </Link>
@@ -67,6 +68,7 @@ export default function Team() {
                 >
                   ลบ
                 </button>
+                  </div>
               </td>
             </tr>
           ))}

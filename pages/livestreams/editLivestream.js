@@ -16,14 +16,14 @@ export default function EditLivestream() {
         .then((data) => {
           setName(data.name);
           setLink(data.link);
-          setPreview(data.logo ? data.logo : ""); // แสดงรูปเก่าถ้ามี
+          setPreview(data.logo ? data.logo : ""); // แสดงโลโก้เก่าถ้ามี
         })
         .catch((error) => console.error("Error fetching livestream:", error));
     }
   }, [id]);
 
   const handleCancel = () => {
-    router.push("/livestreams/mainLivestream"); // กลับไปยังหน้ารายการหลัก
+    router.push("/livestreams/mainLivestream");
   };
 
   const handleSubmit = async (e) => {
@@ -46,11 +46,11 @@ export default function EditLivestream() {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>แก้ไขช่องไลฟ์</h1>
       <form onSubmit={handleSubmit}>
-        {/* ชื่อช่องไลฟ์ */}
         <div className="form-group">
+          <label>ชื่อช่องไลฟ์</label>
           <input
             type="text"
             value={name}
@@ -60,8 +60,8 @@ export default function EditLivestream() {
           />
         </div>
 
-        {/* ลิงก์ไลฟ์ */}
         <div className="form-group">
+          <label>ลิงก์ไลฟ์</label>
           <input
             type="text"
             value={link}
@@ -71,31 +71,27 @@ export default function EditLivestream() {
           />
         </div>
 
-        {/* เลือกรูปโลโก้ */}
         <div className="form-group">
+          <label>โลโก้ไลฟ์</label>
           <input
             type="file"
             accept="image/*"
             onChange={(e) => {
               setLogo(e.target.files[0]);
-              setPreview(URL.createObjectURL(e.target.files[0])); // แสดงรูปที่อัปโหลด
+              setPreview(URL.createObjectURL(e.target.files[0]));
             }}
           />
         </div>
 
-        {/* แสดงตัวอย่างรูป */}
         {preview && (
           <div className="image-preview">
             <img src={preview} alt="Preview" width="100" />
           </div>
         )}
 
-        {/* ปุ่มบันทึก และปุ่มยกเลิก */}
-        <div className="form-group">
-          <button type="submit">บันทึก</button>
-          <button type="button" onClick={handleCancel} className="delete-btn">
-            ยกเลิก
-          </button>
+        <div className="button-group">
+          <button type="submit" className="save-btn">บันทึก</button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">ยกเลิก</button>
         </div>
       </form>
     </div>

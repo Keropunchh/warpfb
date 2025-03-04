@@ -51,28 +51,30 @@ export default function LiveScore() {
           </tr>
         </thead>
         <tbody>
-          {scores.map((score, index) => (
-            <tr key={index}>
-              <td>{score.title}</td>
-              <td>
-                <a href={score.link} target="_blank" rel="noopener noreferrer">
-                  Link
-                </a>
-              </td>
-              <td>
-                <Link href={`/livescore/editLivescore?id=${score.id}`}>
-                  <button className="edit-btn">แก้ไข</button>
-                </Link>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(score.id)}
-                >
-                  ลบ
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+  {scores.map((score, index) => (
+    <tr key={index}>
+      <td>{score.title}</td>
+      <td>
+        <a href={score.link} target="_blank" rel="noopener noreferrer">
+          Link
+        </a>
+      </td>
+      <td>
+        <div className="button-group">
+          <Link href={`/livescore/editLivescore?id=${score.id}`}>
+            <button className="edit-btn">แก้ไข</button>
+          </Link>
+          <button
+            className="delete-btn"
+            onClick={() => handleDelete(score.id)}
+          >
+            ลบ
+          </button>
+        </div>
+      </td>
+    </tr>
+  ))}
+</tbody>
       </table>
     </div>
   );

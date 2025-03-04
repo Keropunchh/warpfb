@@ -51,26 +51,29 @@ export default function League() {
           </tr>
         </thead>
         <tbody>
-          {leagues.map((league, index) => (
-            <tr key={index}>
-              <td>{league.name}</td>
-              <td>
-                <img src={league.logo} alt={league.name} width="150" />
-              </td>
-              <td>
-                <Link href={`/leagues/editLeagues?id=${league.id}`}>
-                  <button className="edit-btn">แก้ไข</button>
-                </Link>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(league.id)}
-                >
-                  ลบ
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+  {leagues.map((league, index) => (
+    <tr key={index}>
+      <td>{league.name}</td>
+      <td>
+        <img src={league.logo} alt={league.name} width="150" />
+      </td>
+      <td>
+        <div className="button-group">
+          <Link href={`/leagues/editLeagues?id=${league.id}`}>
+            <button className="edit-btn">แก้ไข</button>
+          </Link>
+          <button
+            className="delete-btn"
+            onClick={() => handleDelete(league.id)}
+          >
+            ลบ
+          </button>
+        </div>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
       </table>
     </div>
   );

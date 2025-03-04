@@ -71,15 +71,17 @@ export default function LiveScore() {
                 </a>
               </td>
               <td>
-                <Link href={`/livescore/editLivescore?id=${score.id}`}>
-                  <button className="edit-btn">แก้ไข</button>
-                </Link>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(score.id, score.title)}
-                >
-                  ลบ
-                </button>
+                <div className="button-group">
+                  <Link href={`/livescore/editLivescore?id=${score.id}`}>
+                    <button className="edit-btn">แก้ไข</button>
+                  </Link>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(score.id, score.title)}
+                  >
+                    ลบ
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

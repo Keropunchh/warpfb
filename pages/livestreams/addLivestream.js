@@ -5,8 +5,8 @@ export default function AddLivestream() {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const [logo, setLogo] = useState(null);
-  const router = useRouter();
   const [preview, setPreview] = useState("");
+  const router = useRouter();
 
   const handleCancel = () => {
     router.push("/livestreams/mainLivestream");
@@ -33,10 +33,11 @@ export default function AddLivestream() {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>เพิ่มช่องไลฟ์</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
+          <label>ชื่อช่องไลฟ์</label>
           <input
             type="text"
             value={name}
@@ -45,7 +46,9 @@ export default function AddLivestream() {
             required
           />
         </div>
+
         <div className="form-group">
+          <label>ลิงก์ไลฟ์</label>
           <input
             type="text"
             value={link}
@@ -54,7 +57,9 @@ export default function AddLivestream() {
             required
           />
         </div>
+
         <div className="form-group">
+          <label>โลโก้ไลฟ์</label>
           <input
             type="file"
             accept="image/*"
@@ -64,16 +69,16 @@ export default function AddLivestream() {
             }}
           />
         </div>
+
         {preview && (
           <div className="image-preview">
             <img src={preview} alt="Preview" width="100" />
           </div>
         )}
-        <div className="form-group">
-          <button type="submit">เพิ่มช่องไลฟ์</button>
-          <button type="button" onClick={handleCancel} className="delete-btn">
-            ยกเลิก
-          </button>
+
+        <div className="button-group">
+          <button type="submit" className="add-btn">เพิ่มช่องไลฟ์</button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">ยกเลิก</button>
         </div>
       </form>
     </div>

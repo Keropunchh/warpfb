@@ -69,15 +69,17 @@ export default function League() {
                 <img src={league.logo} alt={league.name} width="150" />
               </td>
               <td>
-                <Link href={`/leagues/editLeagues?id=${league.id}`}>
-                  <button className="edit-btn">แก้ไข</button>
-                </Link>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(league.id, league.name)}
-                >
-                  ลบ
-                </button>
+                <div className="button-group">
+                  <Link href={`/leagues/editLeagues?id=${league.id}`}>
+                    <button className="edit-btn">แก้ไข</button>
+                  </Link>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(league.id, league.name)}
+                  >
+                    ลบ
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

@@ -76,6 +76,7 @@ export default function LiveStream() {
                 <img src={stream.logo} alt={stream.title} width="100" />
               </td>
               <td>
+                  <div className="button-group">
                 <Link href={`/livestreams/editLivestream?id=${stream.id}`}>
                   <button className="edit-btn">แก้ไข</button>
                 </Link>
@@ -85,6 +86,7 @@ export default function LiveStream() {
                 >
                   ลบ
                 </button>
+                  </div>
               </td>
             </tr>
           ))}

@@ -4,15 +4,26 @@ import Link from "next/link";
 export default function League() {
   const [leagues, setLeagues] = useState([]);
 
-  const handleDelete = async (id) => {
-    if (!confirm("คุณต้องการลบลีกนี้ใช่หรือไม่?")) return;
+  const handleDelete = async (id, name) => {
+    if (!confirm(`คุณต้องการลบลีก "${name}" ใช่หรือไม่?`)) return;
 
     try {
-      const response = await fetch(`/api/leagues/${id}`, {
+      const matchResponse = await fetch(`/api/matches/league/${name}`);
+      const matches = await matchResponse.json();
+      console.log(matches);
+
+      if (matches.length > 0) {
+        alert(
+          `ไม่สามารถลบลีก "${name}" ได้ เนื่องจากมีการแข่งขันที่ใช้ลีกนี้อยู่`
+        );
+        return;
+      }
+
+      const deleteResponse = await fetch(`/api/leagues/${id}`, {
         method: "DELETE",
       });
 
-      if (response.ok) {
+      if (deleteResponse.ok) {
         setLeagues(leagues.filter((league) => league.id !== id));
       } else {
         console.error("Error deleting league");
@@ -63,7 +74,7 @@ export default function League() {
                 </Link>
                 <button
                   className="delete-btn"
-                  onClick={() => handleDelete(league.id)}
+                  onClick={() => handleDelete(league.id, league.name)}
                 >
                   ลบ
                 </button>

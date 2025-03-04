@@ -4,15 +4,26 @@ import Link from "next/link";
 export default function Team() {
   const [teams, setTeams] = useState([]);
 
-  const handleDelete = async (id) => {
-    if (!confirm("คุณต้องการลบทีมนี้ใช่หรือไม่?")) return;
+  const handleDelete = async (id, name) => {
+    if (!confirm(`คุณต้องการลบทีม "${name}" ใช่หรือไม่?`)) return;
 
     try {
-      const response = await fetch(`/api/teams/${id}`, {
+      const matchResponse = await fetch(`/api/matches/team/${name}`);
+      const matches = await matchResponse.json();
+      console.log(matches);
+
+      if (matches.length > 0) {
+        alert(
+          `ไม่สามารถลบทีม "${name}" ได้ เนื่องจากมีการแข่งขันที่ใช้ทีมนี้อยู่`
+        );
+        return;
+      }
+
+      const deleteResponse = await fetch(`/api/teams/${id}`, {
         method: "DELETE",
       });
 
-      if (response.ok) {
+      if (deleteResponse.ok) {
         setTeams(teams.filter((team) => team.id !== id));
       } else {
         console.error("Error deleting team");
@@ -63,7 +74,7 @@ export default function Team() {
                 </Link>
                 <button
                   className="delete-btn"
-                  onClick={() => handleDelete(team.id)}
+                  onClick={() => handleDelete(team.id, team.name)}
                 >
                   ลบ
                 </button>

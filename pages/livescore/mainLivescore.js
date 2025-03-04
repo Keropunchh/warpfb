@@ -4,18 +4,29 @@ import Link from "next/link";
 export default function LiveScore() {
   const [scores, setScores] = useState([]);
 
-  const handleDelete = async (id) => {
-    if (!confirm("คุณต้องการลบสกอร์นี้ใช่หรือไม่?")) return;
+  const handleDelete = async (id, title) => {
+    if (!confirm(`คุณต้องการลบสกอร์สด "${title}" ใช่หรือไม่?`)) return;
 
     try {
-      const response = await fetch(`/api/livescore/${id}`, {
+      const matchResponse = await fetch(`/api/matches/livescore/${title}`);
+      const matches = await matchResponse.json();
+      console.log(matches);
+
+      if (matches.length > 0) {
+        alert(
+          `ไม่สามารถลบสกอร์สด "${title}" ได้ เนื่องจากมีการแข่งขันที่ใช้สกอร์สดนี้อยู่`
+        );
+        return;
+      }
+
+      const deleteResponse = await fetch(`/api/livescore/${id}`, {
         method: "DELETE",
       });
 
-      if (response.ok) {
+      if (deleteResponse.ok) {
         setScores(scores.filter((score) => score.id !== id));
       } else {
-        console.error("Error deleting score");
+        console.error("Error deleting livescore");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -65,7 +76,7 @@ export default function LiveScore() {
                 </Link>
                 <button
                   className="delete-btn"
-                  onClick={() => handleDelete(score.id)}
+                  onClick={() => handleDelete(score.id, score.title)}
                 >
                   ลบ
                 </button>

@@ -4,18 +4,29 @@ import Link from "next/link";
 export default function LiveStream() {
   const [streams, setStreams] = useState([]);
 
-  const handleDelete = async (id) => {
-    if (!confirm("คุณต้องการลบช่องไลฟ์นี้ใช่หรือไม่?")) return;
+  const handleDelete = async (id, title) => {
+    if (!confirm(`คุณต้องการลบช่องไลฟ์ "${title}" ใช่หรือไม่?`)) return;
 
     try {
-      const response = await fetch(`/api/livestreams/${id}`, {
+      const matchResponse = await fetch(`/api/matches/livestream/${title}`);
+      const matches = await matchResponse.json();
+      console.log(matches);
+
+      if (matches.length > 0) {
+        alert(
+          `ไม่สามารถลบช่องไลฟ์ "${title}" ได้ เนื่องจากมีการแข่งขันที่ใช้ช่องไลฟ์นี้อยู่`
+        );
+        return;
+      }
+
+      const deleteResponse = await fetch(`/api/livestreams/${id}`, {
         method: "DELETE",
       });
 
-      if (response.ok) {
+      if (deleteResponse.ok) {
         setStreams(streams.filter((stream) => stream.id !== id));
       } else {
-        console.error("Error deleting stream");
+        console.error("Error deleting livestream");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -70,7 +81,7 @@ export default function LiveStream() {
                 </Link>
                 <button
                   className="delete-btn"
-                  onClick={() => handleDelete(stream.id)}
+                  onClick={() => handleDelete(stream.id, stream.title)}
                 >
                   ลบ
                 </button>

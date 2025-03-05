@@ -18,7 +18,7 @@ export default function AddTeam() {
 
   // ✅ ฟังก์ชันตรวจสอบอักขระพิเศษ
   const validateTeamName = (name) => {
-    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/g; 
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/g;
     return !specialCharRegex.test(name);
   };
 
@@ -60,7 +60,7 @@ export default function AddTeam() {
 
     const response = await fetch("/api/teams", {
       method: "POST",
-      body: formData, 
+      body: formData,
     });
 
     if (response.ok) {
@@ -109,8 +109,12 @@ export default function AddTeam() {
 
         {/* ✅ ปุ่มส่งข้อมูล & ยกเลิก */}
         <div className="button-group">
-          <button type="submit" className="add-btn">เพิ่มทีม</button>
-          <button type="button" onClick={handleCancel} className="cancel-btn">ยกเลิก</button>
+          <button type="submit" className="add-btn">
+            เพิ่มทีม
+          </button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">
+            ยกเลิก
+          </button>
         </div>
       </form>
     </div>

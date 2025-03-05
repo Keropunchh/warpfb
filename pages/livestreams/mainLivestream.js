@@ -43,7 +43,7 @@ export default function LiveStream() {
   return (
     <div>
       <div className="page-header">
-        <h1>Live Channel Table</h1>
+        <h1>ตารางช่องไลฟ์</h1>
         <Link href="/livestreams/addLivestream">
           <button className="add-btn">เพิ่ม</button>
         </Link>
@@ -68,25 +68,23 @@ export default function LiveStream() {
             <tr key={index}>
               <td>{stream.title}</td>
               <td>
-                <a href={stream.link} target="_blank" rel="noopener noreferrer">
-                  Link
-                </a>
+                <Link href={stream.url}>{stream.title}</Link>
               </td>
               <td>
                 <img src={stream.logo} alt={stream.title} width="100" />
               </td>
               <td>
-                  <div className="button-group">
-                <Link href={`/livestreams/editLivestream?id=${stream.id}`}>
-                  <button className="edit-btn">แก้ไข</button>
-                </Link>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(stream.id, stream.title)}
-                >
-                  ลบ
-                </button>
-                  </div>
+                <div className="button-group">
+                  <Link href={`/livestreams/editLivestream?id=${stream.id}`}>
+                    <button className="edit-btn">แก้ไข</button>
+                  </Link>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(stream.id, stream.title)}
+                  >
+                    ลบ
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

@@ -43,7 +43,7 @@ export default function LiveScore() {
   return (
     <div>
       <div className="page-header">
-        <h1>Livescore Table</h1>
+        <h1>ตารางสกอร์สด</h1>
         <Link href="/livescore/addLivescore">
           <button className="add-btn">เพิ่ม</button>
         </Link>
@@ -66,9 +66,7 @@ export default function LiveScore() {
             <tr key={index}>
               <td>{score.title}</td>
               <td>
-                <a href={score.link} target="_blank" rel="noopener noreferrer">
-                  Link
-                </a>
+                <Link href={score.url}>{score.title}</Link>
               </td>
               <td>
                 <div className="button-group">

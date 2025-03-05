@@ -73,7 +73,7 @@ export default function AddMatch() {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>เพิ่มแมตช์ใหม่</h1>
       <form onSubmit={handleSubmit}>
         {/* เลือกวัน */}

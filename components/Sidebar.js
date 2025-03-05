@@ -11,16 +11,22 @@ export default function Sidebar() {
             <button onClick={() => router.push("/")}>หน้าหลัก</button>
           </li>
           <li>
-            <button onClick={() => router.push("/leagues/mainLeagues")}>ลีค</button>
+            <button onClick={() => router.push("/leagues/mainLeagues")}>
+              ลีก
+            </button>
           </li>
           <li>
             <button onClick={() => router.push("/teams/mainTeam")}>ทีม</button>
           </li>
           <li>
-            <button onClick={() => router.push("/livestreams/mainLivestream")}>ช่องไลฟ์</button>
+            <button onClick={() => router.push("/livestreams/mainLivestream")}>
+              ช่องไลฟ์
+            </button>
           </li>
           <li>
-            <button onClick={() => router.push("/livescore/mainLivescore")}>สกอร์สด</button>
+            <button onClick={() => router.push("/livescore/mainLivescore")}>
+              สกอร์สด
+            </button>
           </li>
         </ul>
       </nav>

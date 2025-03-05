@@ -45,7 +45,7 @@ export default function Team() {
       <div className="page-header">
         <h1>ตารางทีม</h1>
         <Link href="/teams/addTeam">
-          <button className="add-btn">เพิ่มทีม</button>
+          <button className="add-btn">เพิ่ม</button>
         </Link>
       </div>
       <table>
@@ -69,17 +69,17 @@ export default function Team() {
                 <img src={team.logo} alt={team.name} width="150" />
               </td>
               <td>
-              <div className="button-group">
-                <Link href={`/teams/editTeam?id=${team.id}`}>
-                  <button className="edit-btn">แก้ไข</button>
-                </Link>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(team.id, team.name)}
-                >
-                  ลบ
-                </button>
-                  </div>
+                <div className="button-group">
+                  <Link href={`/teams/editTeam?id=${team.id}`}>
+                    <button className="edit-btn">แก้ไข</button>
+                  </Link>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(team.id, team.name)}
+                  >
+                    ลบ
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

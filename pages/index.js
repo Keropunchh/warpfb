@@ -42,16 +42,16 @@ export default function Home() {
       <table>
         <colgroup>
           <col style={{ width: "12%" }} />
-          <col style={{ width: "18%" }} /> {/* ✅ ลดขนาดคอลัมน์ลีก */}
-          <col style={{ width: "30%" }} /> {/* ✅ ปรับขนาดทีมให้พอดี */}
-          <col style={{ width: "10%" }} />
-          <col style={{ width: "15%" }} />
-          <col style={{ width: "15%" }} />
+          <col style={{ width: "20%" }} />
+          <col style={{ width: "30%" }} />
+          <col style={{ width: "8%" }} />
+          <col style={{ width: "18%" }} />
+          <col style={{ width: "12%" }} />
         </colgroup>
         <thead>
           <tr>
             <th>เวลา</th>
-            <th>ลีค</th>
+            <th>ลีก</th>
             <th>ทีม</th>
             <th>สกอร์</th>
             <th>ลิงค์</th>
@@ -69,21 +69,35 @@ export default function Home() {
                 <td>{formattedDate}</td>
 
                 {/* คอลัมน์ลีก */}
-                <td className="league-column">
-                  <img src={match.league_logo} alt={match.league} width="40" />
-                  <span>{match.league}</span>
+                <td className="logo-text-column">
+                  <div className="logo-text-container">
+                    <img
+                      src={match.league_logo}
+                      alt={match.league}
+                      width="40"
+                    />
+                    <span>{match.league}</span>
+                  </div>
                 </td>
 
                 {/* ✅ คอลัมน์ทีม (จัดให้อยู่ตรงกลางทั้งแนวตั้งและแนวนอน) */}
                 <td className="team-column">
                   <div className="team-container">
                     <div className="team">
-                      <img src={match.team1_logo} alt={match.team1} width="40" />
+                      <img
+                        src={match.team1_logo}
+                        alt={match.team1}
+                        width="40"
+                      />
                       <span>{match.team1}</span>
                     </div>
                     <span className="vs-text">VS</span>
                     <div className="team">
-                      <img src={match.team2_logo} alt={match.team2} width="40" />
+                      <img
+                        src={match.team2_logo}
+                        alt={match.team2}
+                        width="40"
+                      />
                       <span>{match.team2}</span>
                     </div>
                   </div>
@@ -91,13 +105,19 @@ export default function Home() {
 
                 {/* คอลัมน์ลิงก์ไลฟ์สกอร์ */}
                 <td>
-                  <Link href={match.livescore_url}>{match.livescore}</Link>
+                  <Link href={match.livescore_url}>Link</Link>
                 </td>
 
                 {/* คอลัมน์ลิงก์สตรีม */}
-                <td className="table-flex">
-                  <img src={match.livestream_logo} alt={match.livestream} width="40" />
-                  <Link href={match.livestream_url}>{match.livestream}</Link>
+                <td className="logo-text-column">
+                  <div className="logo-text-container">
+                    <img
+                      src={match.livestream_logo}
+                      alt={match.livestream}
+                      width="40"
+                    />
+                    <Link href={match.livestream_url}>{match.livestream}</Link>
+                  </div>
                 </td>
 
                 {/* คอลัมน์ปุ่ม */}
@@ -106,7 +126,10 @@ export default function Home() {
                     <Link href={`/matches/editMatch?id=${match.id}`}>
                       <button className="edit-btn">แก้ไข</button>
                     </Link>
-                    <button className="delete-btn" onClick={() => handleDelete(match.id)}>
+                    <button
+                      className="delete-btn"
+                      onClick={() => handleDelete(match.id)}
+                    >
                       ลบ
                     </button>
                   </div>

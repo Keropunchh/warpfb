@@ -45,7 +45,7 @@ export default function League() {
       <div className="page-header">
         <h1>ตารางลีก</h1>
         <Link href="/leagues/addLeagues">
-          <button className="add-btn">เพิ่มลีก</button>
+          <button className="add-btn">เพิ่ม</button>
         </Link>
       </div>
       <table>

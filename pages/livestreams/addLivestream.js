@@ -9,7 +9,9 @@ export default function AddLivestream() {
   const router = useRouter();
 
   const handleCancel = () => {
-    router.push("/livestreams/mainLivestream");
+    if (confirm("คุณต้องการยกเลิกการเพิ่มไลฟ์สดหรือไม่?")) {
+      router.push("/livestreams/mainLivestream");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -77,8 +79,12 @@ export default function AddLivestream() {
         )}
 
         <div className="button-group">
-          <button type="submit" className="add-btn">เพิ่มช่องไลฟ์</button>
-          <button type="button" onClick={handleCancel} className="cancel-btn">ยกเลิก</button>
+          <button type="submit" className="add-btn">
+            เพิ่มช่องไลฟ์
+          </button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">
+            ยกเลิก
+          </button>
         </div>
       </form>
     </div>

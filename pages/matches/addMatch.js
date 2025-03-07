@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 export default function AddMatch() {
   const [matchDate, setMatchDate] = useState("");
@@ -38,7 +38,9 @@ export default function AddMatch() {
   }, []);
 
   const handleCancel = () => {
-    router.push("/index");
+    if (confirm("คุณต้องการยกเลิกการเพิ่มแมตช์หรือไม่?")) {
+      router.push("/");
+    }
   };
 
   const handleSubmit = async (e) => {

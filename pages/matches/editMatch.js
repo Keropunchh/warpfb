@@ -58,7 +58,9 @@ export default function EditMatch() {
   }, [id]);
 
   const handleCancel = () => {
-    router.push("/index");
+    if (confirm("คุณต้องการยกเลิกการแก้ไขแมตช์หรือไม่?")) {
+      router.push("/");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -93,7 +95,7 @@ export default function EditMatch() {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>แก้ไขแมตช์</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

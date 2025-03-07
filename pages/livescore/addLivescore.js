@@ -22,7 +22,9 @@ export default function AddLivescore() {
   };
 
   const handleCancel = () => {
-    router.push("/livescore/mainLivescore"); // ✅ กลับไปที่หน้าหลักของ Livescore
+    if (confirm("คุณต้องการยกเลิกการเพิ่มสกอร์สดหรือไม่?")) {
+      router.push("/livescore/mainLivescore"); // ✅ กลับไปที่หน้าหลักของ Livescore
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -42,7 +44,8 @@ export default function AddLivescore() {
 
     // ✅ ตรวจสอบว่าชื่อซ้ำหรือไม่
     const isDuplicate = existingScores.some(
-      (score) => (score?.name?.trim()?.toLowerCase() || "") === name.trim().toLowerCase()
+      (score) =>
+        (score?.name?.trim()?.toLowerCase() || "") === name.trim().toLowerCase()
     );
 
     if (isDuplicate) {
@@ -92,8 +95,12 @@ export default function AddLivescore() {
         </div>
 
         <div className="button-group">
-          <button type="submit" className="add-btn">เพิ่ม</button>
-          <button type="button" onClick={handleCancel} className="cancel-btn">ยกเลิก</button>
+          <button type="submit" className="add-btn">
+            เพิ่ม
+          </button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">
+            ยกเลิก
+          </button>
         </div>
       </form>
     </div>

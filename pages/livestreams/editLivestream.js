@@ -23,7 +23,9 @@ export default function EditLivestream() {
   }, [id]);
 
   const handleCancel = () => {
-    router.push("/livestreams/mainLivestream");
+    if (confirm("คุณต้องการยกเลิกการแก้ไขไลฟ์สดหรือไม่?")) {
+      router.push("/livestreams/mainLivestream");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -90,8 +92,12 @@ export default function EditLivestream() {
         )}
 
         <div className="button-group">
-          <button type="submit" className="save-btn">บันทึก</button>
-          <button type="button" onClick={handleCancel} className="cancel-btn">ยกเลิก</button>
+          <button type="submit" className="save-btn">
+            บันทึก
+          </button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">
+            ยกเลิก
+          </button>
         </div>
       </form>
     </div>

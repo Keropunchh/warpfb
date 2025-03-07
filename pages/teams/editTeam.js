@@ -36,7 +36,9 @@ export default function EditTeam() {
   };
 
   const handleCancel = () => {
-    router.push("/teams/mainTeam"); // กลับไปที่หน้าหลักของทีม
+    if (confirm("คุณต้องการยกเลิกการแก้ไขทีมใหม่หรือไม่?")) {
+      router.push("/teams/mainTeam");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -56,7 +58,8 @@ export default function EditTeam() {
 
     // ตรวจสอบว่าชื่อทีมซ้ำหรือไม่
     const isDuplicate = existingTeams.some(
-      (team) => team.name.toLowerCase() === teamName.toLowerCase() && team.id !== id
+      (team) =>
+        team.name.toLowerCase() === teamName.toLowerCase() && team.id !== id
     );
 
     if (isDuplicate) {
@@ -116,8 +119,12 @@ export default function EditTeam() {
         )}
 
         <div className="button-group">
-          <button type="submit" className="save-btn">บันทึก</button>
-          <button type="button" onClick={handleCancel} className="cancel-btn">ยกเลิก</button>
+          <button type="submit" className="save-btn">
+            บันทึก
+          </button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">
+            ยกเลิก
+          </button>
         </div>
       </form>
     </div>

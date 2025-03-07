@@ -18,17 +18,21 @@ export default function EditLivescore() {
           setLink(data.link || ""); // ป้องกัน undefined
         })
         .catch((error) => console.error("Error fetching livescore:", error));
-      
+
       // ✅ ดึงข้อมูลทั้งหมดเพื่อตรวจสอบการซ้ำกัน
       fetch("/api/livescore")
         .then((response) => response.json())
         .then((data) => setExistingScores(data || []))
-        .catch((error) => console.error("Error fetching all livescores:", error));
+        .catch((error) =>
+          console.error("Error fetching all livescores:", error)
+        );
     }
   }, [id]);
 
   const handleCancel = () => {
-    router.push("/livescore/mainLivescore"); // ✅ กลับไปที่หน้าหลัก
+    if (confirm("คุณต้องการยกเลิกการแก้ไขสกอร์สดหรือไม่?")) {
+      router.push("/livescore/mainLivescore"); // ✅ กลับไปที่หน้าหลัก
+    }
   };
 
   // ✅ ฟังก์ชันตรวจสอบอักขระพิเศษ
@@ -53,9 +57,10 @@ export default function EditLivescore() {
     }
 
     // ✅ ตรวจสอบว่าชื่อซ้ำหรือไม่ (ยกเว้นตัวเอง)
-    const isDuplicate = existingScores?.some((score) => 
-      score?.id !== id && 
-      (score?.name?.trim().toLowerCase() || "") === name.trim().toLowerCase()
+    const isDuplicate = existingScores?.some(
+      (score) =>
+        score?.id !== id &&
+        (score?.name?.trim().toLowerCase() || "") === name.trim().toLowerCase()
     );
 
     if (isDuplicate) {
@@ -105,8 +110,12 @@ export default function EditLivescore() {
         </div>
 
         <div className="button-group">
-          <button type="submit" className="save-btn">บันทึก</button>
-          <button type="button" onClick={handleCancel} className="cancel-btn">ยกเลิก</button>
+          <button type="submit" className="save-btn">
+            บันทึก
+          </button>
+          <button type="button" onClick={handleCancel} className="cancel-btn">
+            ยกเลิก
+          </button>
         </div>
       </form>
     </div>
